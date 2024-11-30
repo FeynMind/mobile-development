@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">FeynMind</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="title_login_page">Welcome to FeynMind</string>
+    <string name="message_login_page">Login to know more abou FeynMind</string>
+    <string name="title_signup_page">Complete your identity</string>
+    <string name="name">Name</string>
+    <string name="register">Register</string>
+    <string name="message_main_page">Pesan percobaan</string>
+    <string name="logout">Logout</string>
+    <string name="message_welcome_page">Percobaan wlcome</string>
+    <string name="title_welcome_page">Welcome</string>
 </resources>

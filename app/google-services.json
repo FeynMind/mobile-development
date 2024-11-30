@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1013596889036",
+    "project_id": "feynmind",
+    "storage_bucket": "feynmind.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1013596889036:android:231ebd96998fe018ebc769",
+        "android_client_info": {
+          "package_name": "com.bangkit.feynmind"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1013596889036-ggsfgego4ejfiq6md93lbp76senis30v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAd4ta369jQmSpmkQyvQCg16GKOlFqsXAw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1013596889036-ggsfgego4ejfiq6md93lbp76senis30v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
