@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_onPrimary"
-    tools:context=".ui.login.LoginActivity">
+    android:background="?attr/colorOnBackground"
+    tools:context=".ui.onboarding.LoginActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -23,7 +23,7 @@
             android:textSize="32sp"
             android:textStyle="bold"
             android:textAlignment="center"
-            android:textColor="@color/color_primary"/>
+            android:textColor="?attr/colorPrimary"/>
 
         <TextView
             android:id="@+id/tv_nameApp"
@@ -33,7 +33,7 @@
             android:textSize="32sp"
             android:textStyle="bold"
             android:textAlignment="center"
-            android:textColor="@color/color_primary"/>
+            android:textColor="?attr/colorPrimary"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -43,7 +43,7 @@
             android:text="@string/descLogin"
             android:textSize="16sp"
             android:textAlignment="center"
-            android:textColor="@color/color_primary"/>
+            android:textColor="?attr/colorPrimary"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_layout_login_name"
@@ -80,7 +80,6 @@
 
             <com.bangkit.feynmind.customview.TextInputEditTextPassword
                 android:id="@+id/ed_login_password"
-                android:padding="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/masukkan_kata_sandi"
@@ -94,12 +93,11 @@
             android:layout_height="wrap_content"
             android:text="@string/tampilkan_kata_sandi" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_sign_in"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/color_secondaryVariant"
-            android:textColor="@color/color_primary"
+            app:cornerRadius="8dp"
             android:text="@string/masuk" />
 
         <LinearLayout
@@ -122,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:layout_marginStart="5dp"
-                android:textColor="@color/color_outline"
+                android:textColor="?attr/colorPrimary"
                 android:textSize="16sp"
                 android:text="@string/daftar"/>
 

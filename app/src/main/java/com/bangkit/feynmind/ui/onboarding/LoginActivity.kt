@@ -1,17 +1,12 @@
-package com.bangkit.feynmind.ui.login
+package com.bangkit.feynmind.ui.onboarding
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.bangkit.feynmind.MainActivity
 import com.bangkit.feynmind.R
 import com.bangkit.feynmind.databinding.ActivityLoginBinding
-import com.bangkit.feynmind.ui.register.RegisterActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {

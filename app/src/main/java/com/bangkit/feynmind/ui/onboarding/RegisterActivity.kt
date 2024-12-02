@@ -1,6 +1,5 @@
-package com.bangkit.feynmind.ui.register
+package com.bangkit.feynmind.ui.onboarding
 
-import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -9,13 +8,9 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.bangkit.feynmind.R
 import com.bangkit.feynmind.databinding.ActivityRegisterBinding
-import com.bangkit.feynmind.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class RegisterActivity : AppCompatActivity() {

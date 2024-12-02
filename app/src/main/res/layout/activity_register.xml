@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.register.RegisterActivity">
+    tools:context=".ui.onboarding.RegisterActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -22,7 +22,7 @@
             android:textSize="32sp"
             android:textStyle="bold"
             android:textAlignment="center"
-            android:textColor="@color/color_primary"/>
+            android:textColor="?attr/colorPrimary"/>
 
         <TextView
             android:id="@+id/tv_nameApp"
@@ -32,7 +32,7 @@
             android:textSize="32sp"
             android:textStyle="bold"
             android:textAlignment="center"
-            android:textColor="@color/color_primary"/>
+            android:textColor="?attr/colorPrimary"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -42,7 +42,7 @@
             android:text="@string/descRegister"
             android:textSize="16sp"
             android:textAlignment="center"
-            android:textColor="@color/color_primary"/>
+            android:textColor="?attr/colorPrimary"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_layout_register_name"
@@ -115,6 +115,7 @@
             android:id="@+id/btn_sign_up"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:cornerRadius="8dp"
             android:text="@string/daftar" />
 
         <LinearLayout
@@ -137,7 +138,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:layout_marginStart="5dp"
-                android:textColor="#0095F6"
+                android:textColor="?attr/colorPrimary"
                 android:textSize="16sp"
                 android:text="@string/masuk"/>
 

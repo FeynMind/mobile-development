@@ -1,7 +1,20 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.FeynMind" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.FeynMind" parent="Theme.Material3.DayNight">
         <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/dark_green_dark</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorContainer">@color/container_green_dark</item>
+        <item name="colorOnContainer">@color/dark_green_dark</item>
+        <item name="colorSecondary">@color/yellow_dark</item>
+        <item name="colorOnSecondary">@color/dark_green_dark</item>
+
+        <item name="colorOutline">@color/outline_green_dark</item>
+        <item name="colorOutlineVariant">@color/font_grey_dark</item>
+
+        <item name="colorTertiary">@color/red_dark</item>
+        <item name="colorOnTertiary">@color/container_red_dark</item>
+
+        <item name="colorOnBackground">@color/background_green</item>
     </style>
 </resources>

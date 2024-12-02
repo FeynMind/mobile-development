@@ -1,8 +1,23 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.FeynMind" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.FeynMind" parent="Theme.Material3.DayNight">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/dark_green</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorContainer">@color/container_green</item>
+        <item name="colorOnContainer">@color/dark_green</item>
+        <item name="colorSecondary">@color/yellow</item>
+        <item name="colorOnSecondary">@color/dark_green</item>
+
+        <item name="colorOutline">@color/outline_green</item>
+        <item name="colorOutlineVariant">@color/font_grey</item>
+
+        <item name="colorTertiary">@color/red</item>
+        <item name="colorOnTertiary">@color/container_red</item>
+
+        <item name="colorOnBackground">@color/background_green</item>
+
+
     </style>
 
     <style name="Theme.FeynMind" parent="Base.Theme.FeynMind" />
