@@ -8,6 +8,7 @@
     <color name="color_primaryDim">#003516</color>
     <color name="color_onPrimaryVariant">#FFFFFF</color>
     <color name="color_secondary">#334910</color>
+    <color name="color_secondaryVariant">#D0EDA1</color>
     <color name="color_onSecondary">#FFFFFF</color>
     <color name="color_secondaryDim">#1F3200</color>
     <color name="color_onSecondaryVariant">#FFFFFF</color>
@@ -22,4 +23,7 @@
     <color name="color_surfaceContainer">#EBEFE7</color>
     <color name="color_surfaceContainerHigh">#E5EAE2</color>
     <color name="color_surfaceContainerHighest">#DFE4DC</color>
+    <color name="color_outline">#717970</color>
+    <color name="color_background">#DDE5DA</color>
+
 </resources>

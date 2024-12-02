@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">FeynMind</string>
+    <string name="register">Register</string>
+    <string name="daftar">Daftar</string>
+    <string name="belum_punya_akun">Belum punya akun?</string>
+    <string name="masuk">Masuk</string>
+    <string name="tampilkan_password">Tampilkan password</string>
+    <string name="selamat_datang_di">Selamat Datang di</string>
+    <string name="descLogin">Silakan masuk untuk menemukan pengalaman belajar yang baru</string>
+    <string name="alamat_mail_harus_valid">Alamat email harus valid</string>
+    <string name="kata_sandi_minimal_8_karakter">Kata sandi minimal terdiri dari 8 karakter</string>
+    <string name="tampilkan_kata_sandi">Tampilkan kata sandi</string>
+    <string name="masukkan_kata_sandi">Masukkan kata sandi</string>
+    <string name="masukkan_email_kamu">Masukkan email kamu</string>
+    <string name="isi_email">Harap isi email terlebih dahulu</string>
+    <string name="isi_kata_sandi">Harap isi kata sandi terlebih dahulu</string>
+    <string name="login_success">Masuk berhasil</string>
 </resources>
