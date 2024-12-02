@@ -15,4 +15,10 @@
     <string name="isi_email">Harap isi email terlebih dahulu</string>
     <string name="isi_kata_sandi">Harap isi kata sandi terlebih dahulu</string>
     <string name="login_success">Masuk berhasil</string>
+    <string name="descRegister">Daftar akunmu untuk menemukan pengalaman belajar yang baru</string>
+    <string name="inputName">Masukkan nama kamu</string>
+    <string name="sudah_punya_akun">Sudah memiliki akun?</string>
+    <string name="isi_nama">Harap isi nama kamu terlebih dahulu</string>
+    <string name="buat_akun_berhasil">Akun berhasil dibuat</string>
+    <string name="buat_akun_gagal">Gagal membuat akun</string>
 </resources>
