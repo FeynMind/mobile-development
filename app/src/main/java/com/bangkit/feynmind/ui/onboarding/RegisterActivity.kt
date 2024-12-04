@@ -2,6 +2,7 @@ package com.bangkit.feynmind.ui.onboarding
 
 import android.content.Context
 import android.content.Intent
+import android.content.IntentSender
 import android.os.Bundle
 import android.text.InputType
 import android.view.View
@@ -11,12 +12,20 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bangkit.feynmind.R
 import com.bangkit.feynmind.databinding.ActivityRegisterBinding
+import com.google.android.gms.auth.api.identity.BeginSignInRequest
+import com.google.android.gms.auth.api.identity.Identity
+import com.google.android.gms.auth.api.identity.SignInClient
+import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var firebaseAuth: FirebaseAuth
+    private val REQ_ONE_TAP_REGISTER = 1002
+    private lateinit var oneTapClient: SignInClient
+    private lateinit var signInRequest: BeginSignInRequest
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +36,8 @@ class RegisterActivity : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
 
         setupAction()
+        setupGoogleSignIn()
+
     }
 
     private fun setupAction() {
@@ -39,9 +50,9 @@ class RegisterActivity : AppCompatActivity() {
                 toggleLoginPasswordVisibility(isChecked)
             }
 
-            tvSignIn.setOnClickListener { moveToLoginActivity() }
+            tvLogin.setOnClickListener { moveToLoginActivity() }
 
-            btnSignUp.setOnClickListener {
+            btnRegister.setOnClickListener {
                 val name = edRegisterName.text.toString()
                 val email = edRegisterEmail.text.toString()
                 val password = edRegisterPassword.text.toString()
@@ -109,12 +120,12 @@ class RegisterActivity : AppCompatActivity() {
         binding.apply {
             // Menampilkan progress bar saat proses registrasi
             progressBar.visibility = View.VISIBLE
-            btnSignUp.isEnabled = false
+            btnRegister.isEnabled = false
 
             firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this@RegisterActivity) { task ->
                     progressBar.visibility = View.GONE
-                    btnSignUp.isEnabled = true
+                    btnRegister.isEnabled = true
 
                     if (task.isSuccessful) {
                         // Registrasi berhasil
@@ -135,6 +146,76 @@ class RegisterActivity : AppCompatActivity() {
                 }
         }
     }
+
+    private fun setupGoogleSignIn() {
+        oneTapClient = Identity.getSignInClient(this)
+        signInRequest = BeginSignInRequest.builder()
+            .setGoogleIdTokenRequestOptions(
+                BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
+                    .setSupported(true)
+                    .setServerClientId(getString(R.string.default_web_client_id))
+                    .setFilterByAuthorizedAccounts(false)
+                    .build()
+            )
+            .setAutoSelectEnabled(true)
+            .build()
+
+        binding.btnGoogleRegister.setOnClickListener {
+            oneTapClient.beginSignIn(signInRequest)
+                .addOnSuccessListener { result ->
+                    try {
+                        startIntentSenderForResult(
+                            result.pendingIntent.intentSender,
+                            REQ_ONE_TAP_REGISTER, null, 0, 0, 0, null
+                        )
+                    } catch (e: IntentSender.SendIntentException) {
+                        Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, "Failed: ${it.message}", Toast.LENGTH_SHORT).show()
+                }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQ_ONE_TAP_REGISTER) {
+            try {
+                val credential = oneTapClient.getSignInCredentialFromIntent(data)
+                val idToken = credential.googleIdToken
+                if (idToken != null) {
+                    firebaseAuthWithGoogle(idToken)
+                } else {
+                    Toast.makeText(this, "No ID Token!", Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: ApiException) {
+                Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun firebaseAuthWithGoogle(idToken: String) {
+        val credential = GoogleAuthProvider.getCredential(idToken, null)
+        firebaseAuth.signInWithCredential(credential)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    val user = firebaseAuth.currentUser
+                    if (user != null) {
+                        saveUserDataToDatabase(user.displayName, user.email) // Tambahkan logika ini jika ingin menyimpan data ke database
+                    }
+                    Toast.makeText(this, "Registration Success", Toast.LENGTH_SHORT).show()
+                    moveToLoginActivity() // Arahkan ke halaman login atau home
+                } else {
+                    Toast.makeText(this, "Authentication Failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
+
+    private fun saveUserDataToDatabase(name: String?, email: String?) {
+        Toast.makeText(this, "Data saved: $name, $email", Toast.LENGTH_SHORT).show()
+    }
+
 
     private fun moveToLoginActivity() {
         val intent = Intent(this, LoginActivity::class.java)
