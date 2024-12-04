@@ -202,10 +202,10 @@ class RegisterActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     val user = firebaseAuth.currentUser
                     if (user != null) {
-                        saveUserDataToDatabase(user.displayName, user.email) // Tambahkan logika ini jika ingin menyimpan data ke database
+                        saveUserDataToDatabase(user.displayName, user.email)
                     }
                     Toast.makeText(this, "Registration Success", Toast.LENGTH_SHORT).show()
-                    moveToLoginActivity() // Arahkan ke halaman login atau home
+                    moveToHomeScreen()
                 } else {
                     Toast.makeText(this, "Authentication Failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
@@ -213,13 +213,17 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun saveUserDataToDatabase(name: String?, email: String?) {
-        Toast.makeText(this, "Data saved: $name, $email", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Hai $name, $email, Selamat Datang", Toast.LENGTH_SHORT).show()
     }
-
 
     private fun moveToLoginActivity() {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
+        finish()
+    }
+
+    private fun moveToHomeScreen() {
+        startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
 }

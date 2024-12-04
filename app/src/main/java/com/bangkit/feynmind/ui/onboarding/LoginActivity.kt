@@ -36,9 +36,10 @@ class LoginActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
+
         // Konfigurasi Google Sign-In
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))  // Token ID dari Firebase Console
+            .requestIdToken(getDefaultWebClientId())  // Token ID dari Firebase Console
             .requestEmail()
             .build()
 
@@ -48,6 +49,16 @@ class LoginActivity : AppCompatActivity() {
         setupActions()
         setupGoogleLogin()
     }
+
+    private fun getDefaultWebClientId(): String {
+        val jsonResId = applicationContext.resources.getIdentifier("default_web_client_id", "string", packageName)
+        if (jsonResId != 0) {
+            return applicationContext.getString(jsonResId)
+        } else {
+            throw IllegalStateException("default_web_client_id not found in google-services.json")
+        }
+    }
+
 
     private fun setupActions() {
         binding.apply {
