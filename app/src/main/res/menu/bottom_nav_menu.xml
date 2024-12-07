@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home"
+        android:enabled="true"
+        android:title="@string/nav_beranda" />
+
+    <item
+        android:id="@+id/navigation_chat"
+        android:icon="@drawable/ic_feynmind_temp"
+        android:enabled="true"
+        android:title="@string/nav_feynmind" />
+
+    <item
+        android:id="@+id/navigation_profil"
+        android:icon="@drawable/ic_profile"
+        android:enabled="true"
+        android:title="@string/nav_profil" />
+
+</menu>

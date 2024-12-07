@@ -114,6 +114,20 @@ class LoginActivity : AppCompatActivity() {
                     btnLogin.isEnabled = true
                     if (task.isSuccessful) {
                         Toast.makeText(this@LoginActivity, R.string.login_success, Toast.LENGTH_SHORT).show()
+
+                        firebaseAuth.currentUser?.getIdToken(true)
+                            ?.addOnCompleteListener { tokenTask ->
+                                if (tokenTask.isSuccessful) {
+                                    val idToken = tokenTask.result?.token
+                                    idToken?.let {
+                                        android.util.Log.d("FirebaseToken", "Token: $it")
+                                    }
+                                } else {
+                                    android.util.Log.e("FirebaseToken", "Failed to retrieve token: ${tokenTask.exception?.message}")
+                                }
+                            }
+
+
                         moveToHomeScreen()
                     } else {
                         Toast.makeText(this@LoginActivity, task.exception?.localizedMessage, Toast.LENGTH_SHORT).show()
@@ -176,6 +190,19 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Toast.makeText(this, "Login Success", Toast.LENGTH_SHORT).show()
+
+                    firebaseAuth.currentUser?.getIdToken(true)
+                        ?.addOnCompleteListener { tokenTask ->
+                            if (tokenTask.isSuccessful) {
+                                val idToken = tokenTask.result?.token
+                                idToken?.let {
+                                    android.util.Log.d("FirebaseToken", "Token: $it")
+                                }
+                            } else {
+                                android.util.Log.e("FirebaseToken", "Failed to retrieve token: ${tokenTask.exception?.message}")
+                            }
+                        }
+
                     moveToHomeScreen()
                 } else {
                     Toast.makeText(this, "Authentication Failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
