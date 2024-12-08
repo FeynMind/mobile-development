@@ -24,6 +24,14 @@
     <string name="nav_profil">Profil</string>
     <string name="nav_feynmind">Feynmind</string>
     <string name="nav_beranda">Beranda</string>
+    <string name="title_starter_1">Kamu Bingung?</string>
+    <string name="title_starter_2">Mau Punya Temen Belajar?</string>
+    <string name="title_starter_3">Ayo Bergabung</string>
+    <string name="desc_starter_1">Mau belajar tapi bosen sama metode belajar yang itu-itu aja?</string>
+    <string name="desc_starter_2">Nyari temen yang bisa bantu kamu belajar?</string>
+    <string name="desc_starter_3">Mari jelajahi dunia baru bersama FeynMind</string>
+    <string name="edit_profile">Edit Profil</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
