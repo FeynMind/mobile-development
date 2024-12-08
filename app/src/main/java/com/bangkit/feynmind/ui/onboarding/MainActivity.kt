@@ -8,6 +8,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.bangkit.feynmind.R
+import com.bangkit.feynmind.starter.StarterActivity
 import com.bangkit.feynmind.ui.home.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -20,6 +21,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val sharedPref = getSharedPreferences("FeynMindPreferences", MODE_PRIVATE)
+        val isFirstLaunch = sharedPref.getBoolean("isFirstLaunch", true)
+
+        if (isFirstLaunch) {
+            val intent = Intent(this, StarterActivity::class.java)
+            startActivity(intent)
+            sharedPref.edit().putBoolean("isFirstLaunch", false).apply()
+            finish()
+            return
+        }
 
         firebaseAuth = FirebaseAuth.getInstance()
         checkUserLoginStatus()
