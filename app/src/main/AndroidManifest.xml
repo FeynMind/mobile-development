@@ -15,6 +15,9 @@
         android:theme="@style/Theme.FeynMind"
         tools:targetApi="31">
         <activity
+            android:name=".ui.onboarding.MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".starter.StarterActivity"
             android:exported="false" />
         <activity
@@ -24,7 +27,7 @@
             android:name=".ui.onboarding.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.onboarding.MainActivity"
+            android:name=".ui.onboarding.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
