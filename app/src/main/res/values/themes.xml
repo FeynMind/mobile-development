@@ -20,5 +20,10 @@
 
     </style>
 
+    <style name="CircularImageShape" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
     <style name="Theme.FeynMind" parent="Base.Theme.FeynMind" />
 </resources>

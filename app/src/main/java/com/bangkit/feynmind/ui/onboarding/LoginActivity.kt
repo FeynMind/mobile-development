@@ -36,7 +36,6 @@ class LoginActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-
         // Konfigurasi Google Sign-In
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getDefaultWebClientId())  // Token ID dari Firebase Console
@@ -62,7 +61,6 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setupActions() {
         binding.apply {
-            // Tombol Login Biasa
             btnLogin.setOnClickListener {
                 val email = edLoginEmail.text.toString().trim()
                 val password = edLoginPassword.text.toString().trim()
@@ -73,7 +71,6 @@ class LoginActivity : AppCompatActivity() {
                 startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
             }
 
-            // Tampilkan atau sembunyikan password
             cbShowPassword.setOnCheckedChangeListener { _, isChecked ->
                 togglePasswordVisibility(isChecked)
             }

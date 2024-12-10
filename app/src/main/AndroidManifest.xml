@@ -18,9 +18,6 @@
             android:name=".starter.StarterActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.home.HomeActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.onboarding.RegisterActivity"
             android:exported="false" />
         <activity

@@ -7,8 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.bangkit.feynmind.R
-import com.bangkit.feynmind.databinding.ActivityHomeBinding
 import com.bangkit.feynmind.databinding.FragmentHomeBinding
 import com.bangkit.feynmind.ui.onboarding.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -47,7 +45,7 @@ class HomeFragment : Fragment() {
         val intent = Intent(requireContext(), LoginActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK // Clear back stack
         startActivity(intent)
-        activity?.finish() // Close the hosting activity if necessary
+        activity?.finish()
     }
 
     override fun onDestroyView() {
