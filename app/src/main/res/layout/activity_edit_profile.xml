@@ -7,20 +7,11 @@
     android:layout_height="match_parent"
     tools:context=".ui.profile.ProfileFragment">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:navigationIcon="@drawable/ic_baseline_arrow_back"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/container_green"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
     <!-- ScrollView untuk konten -->
     <ScrollView
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbar"
         android:paddingTop="25dp"
         android:paddingStart="25dp"
         android:paddingEnd="25dp">

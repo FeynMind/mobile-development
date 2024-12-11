@@ -9,61 +9,78 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.Toast
-import android.widget.Toolbar
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
 import com.bangkit.feynmind.R
-import com.google.android.material.imageview.ShapeableImageView
+import com.bangkit.feynmind.databinding.FragmentProfileBinding
+import com.google.firebase.auth.FirebaseAuth
 import java.io.File
 import java.io.FileOutputStream
 
-class ProfileFragment : Fragment(R.layout.fragment_profile) {
+class ProfileFragment : Fragment() {
 
-    private lateinit var iconTopRight: ImageView
-    private lateinit var imageView2: ShapeableImageView
+    private var _binding: FragmentProfileBinding? = null
+    private val binding get() = _binding!!
     private var currentImageUri: Uri? = null
 
-    // Gunakan ActivityResultContracts untuk galeri
+    private val firebaseAuth: FirebaseAuth by lazy {
+        FirebaseAuth.getInstance()
+    }
+
     private val getContent =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
             uri?.let {
                 currentImageUri = it
-                imageView2.setImageURI(it) // Ganti gambar pada ImageView dengan gambar dari galeri
+                binding.imageView2.setImageURI(it)
                 saveImageUriToPreferences(requireContext(), it)
-            }
+                Log.d("ProfileFragment", "Image URI: $it")
+            } ?: Log.e("ProfileFragment", "Failed to get image URI")
         }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val binding = inflater.inflate(R.layout.fragment_profile, container, false)
+    ): View {
+        _binding = FragmentProfileBinding.inflate(inflater, container, false)
 
-        // Inisialisasi views
-        iconTopRight = binding.findViewById(R.id.iconTopRight)
-        imageView2 = binding.findViewById(R.id.imageView2)
-
+        loadUserProfile()
         loadImageFromPreferences()
 
-        // Menangani klik pada iconTopRight untuk membuka galeri
-        iconTopRight.setOnClickListener {
+        binding.iconEditPicture.setOnClickListener {
             openGallery()
         }
 
-        return binding
+        binding.btnEditp.setOnClickListener {
+            val intent = Intent(requireContext(), EditProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+        return binding.root
     }
 
-    // Fungsi untuk membuka galeri
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun loadUserProfile() {
+        val user = firebaseAuth.currentUser
+        if (user != null) {
+            binding.textView2.text = user.displayName ?: "Nama tidak tersedia"
+            binding.textViewEmail.text = user.email ?: "Email tidak tersedia"
+        } else {
+            Toast.makeText(requireContext(), "Pengguna tidak ditemukan", Toast.LENGTH_SHORT).show()
+        }
+    }
+
     private fun openGallery() {
-        getContent.launch("image/*") // Membuka galeri untuk memilih gambar
+        getContent.launch("image/*")
     }
 
-    fun saveImageToInternalStorage(context: Context, imageUri: Uri): String? {
-        try {
+    private fun saveImageToInternalStorage(context: Context, imageUri: Uri): String? {
+        return try {
             val inputStream = context.contentResolver.openInputStream(imageUri)
-            val fileName = "saved_image.png" // Nama file gambar
+            val fileName = "saved_image.png"
             val file = File(context.filesDir, fileName)
             val outputStream = FileOutputStream(file)
 
@@ -71,26 +88,23 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             inputStream?.close()
             outputStream.close()
 
-            return file.absolutePath // Return path ke file yang disimpan
+            file.absolutePath
         } catch (e: Exception) {
             e.printStackTrace()
-            return null
+            null
         }
     }
 
-    // Menyimpan URI gambar di SharedPreferences
     private fun saveImageUriToPreferences(context: Context, imageUri: Uri) {
         val sharedPreferences = context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
 
-        // Salin gambar ke internal storage
         val imagePath = saveImageToInternalStorage(context, imageUri)
         imagePath?.let {
             editor.putString("imagePath", it)
         }
         editor.apply()
     }
-
 
     private fun loadImageUriFromPreferences(context: Context): Uri? {
         val sharedPreferences = context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
@@ -99,12 +113,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             try {
                 Uri.parse(it)
             } catch (e: Exception) {
-                null // Jika parsing gagal, kembalikan null
+                null
             }
         }
     }
 
-    fun loadImageFromPreferences() {
+    private fun loadImageFromPreferences() {
         val sharedPreferences = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val imagePath = sharedPreferences.getString("imagePath", null)
 
@@ -112,15 +126,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             val file = File(it)
             if (file.exists()) {
                 val uri = Uri.fromFile(file)
-                imageView2.setImageURI(uri) // Tampilkan gambar di ImageView
+                binding.imageView2.setImageURI(uri)
             } else {
-                // Gambar tidak ditemukan, tampilkan default
-                imageView2.setImageResource(R.drawable.ic_user)
+                binding.imageView2.setImageResource(R.drawable.ic_user)
             }
         } ?: run {
-            // Tidak ada path disimpan, tampilkan default
-            imageView2.setImageResource(R.drawable.ic_user)
+            binding.imageView2.setImageResource(R.drawable.ic_user)
         }
     }
 }
-

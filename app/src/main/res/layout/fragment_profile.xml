@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.profile.ProfileFragment">
 
-    <!-- ScrollView untuk konten -->
     <ScrollView
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
@@ -37,7 +36,7 @@
                     app:shapeAppearanceOverlay="@style/CircularImageShape"/>
 
                 <ImageView
-                    android:id="@+id/iconTopRight"
+                    android:id="@+id/iconEditPicture"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="top|end"
@@ -78,7 +77,7 @@
                 android:text="progress"/>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_editp"
+                android:id="@+id/btnEditp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
