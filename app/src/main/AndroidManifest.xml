@@ -15,6 +15,9 @@
         android:theme="@style/Theme.FeynMind"
         tools:targetApi="31">
         <activity
+            android:name=".ui.chat.TopicActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.onboarding.MainActivity"
             android:exported="false" />
         <activity

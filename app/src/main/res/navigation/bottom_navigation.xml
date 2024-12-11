@@ -12,10 +12,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_chat"
-        android:name="com.bangkit.feynmind.ui.chat.ChatFragment"
+        android:id="@+id/navigation_class"
+        android:name="com.bangkit.feynmind.ui.chat.ClassFragment"
         android:label="@string/nav_feynmind"
-        tools:layout="@layout/fragment_chat" />
+        tools:layout="@layout/fragment_class" />
 
     <fragment
         android:id="@+id/navigation_profil"

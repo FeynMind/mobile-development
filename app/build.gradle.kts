@@ -4,6 +4,7 @@ plugins {
     id("kotlin-parcelize")
     id("com.google.devtools.ksp")
     id("com.google.gms.google-services")
+    id ("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -65,5 +66,4 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(libs.firebase.firestore)
     implementation (libs.play.services.auth)
-
 }

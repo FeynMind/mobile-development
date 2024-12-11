@@ -7,7 +7,7 @@
         android:title="@string/nav_beranda" />
 
     <item
-        android:id="@+id/navigation_chat"
+        android:id="@+id/navigation_class"
         android:icon="@drawable/ic_feynmind_temp"
         android:enabled="true"
         android:title="@string/nav_feynmind" />
