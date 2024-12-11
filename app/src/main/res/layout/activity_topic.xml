@@ -5,7 +5,20 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.chat.TopicActivity">
+    tools:context=".ui.grade.TopicActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/topic_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     <TextView
         android:id="@+id/tv_topic_title"
@@ -14,9 +27,23 @@
         android:text="Judul Topik"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/topic_toolbar"
+        app:layout_constraintVertical_bias="0.125" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/topic_choice"
+        android:layout_width="120dp"
+        android:layout_height="72dp"
+        android:text="Sel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_topic_title"
+        app:layout_constraintVertical_bias="0.06" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

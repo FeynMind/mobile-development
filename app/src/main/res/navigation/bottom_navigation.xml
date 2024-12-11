@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_class"
-        android:name="com.bangkit.feynmind.ui.chat.ClassFragment"
+        android:name="com.bangkit.feynmind.ui.grade.ClassFragment"
         android:label="@string/nav_feynmind"
         tools:layout="@layout/fragment_class" />
 

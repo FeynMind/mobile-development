@@ -15,7 +15,10 @@
         android:theme="@style/Theme.FeynMind"
         tools:targetApi="31">
         <activity
-            android:name=".ui.chat.TopicActivity"
+            android:name=".ui.chat.VoiceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.grade.TopicActivity"
             android:exported="false" />
         <activity
             android:name=".ui.onboarding.MainActivity"

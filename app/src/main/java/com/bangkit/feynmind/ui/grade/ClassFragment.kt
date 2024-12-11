@@ -1,4 +1,4 @@
-package com.bangkit.feynmind.ui.chat
+package com.bangkit.feynmind.ui.grade
 
 import android.content.Intent
 import android.os.Bundle
