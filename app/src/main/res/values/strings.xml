@@ -32,6 +32,7 @@
     <string name="desc_starter_3">Mari jelajahi dunia baru bersama FeynMind</string>
     <string name="edit_profile">Edit Profil</string>
     <string name="default_web_client_id">ID klien</string>
+    <string name="scroll_view_description">Halaman Edit Profile</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

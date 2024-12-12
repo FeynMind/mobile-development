@@ -17,7 +17,12 @@
 
         <item name="android:colorBackground">@color/background_green</item>
 
+        <item name="switchStyle">@style/SwitchMaterialStyle</item>
+    </style>
 
+    <style name="SwitchMaterialStyle" parent="Widget.Material3.CompoundButton.Switch">
+        <item name="trackTint">@color/font_grey</item>
+        <item name="thumbTint">@color/dark_green</item>
     </style>
 
     <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.DarkActionBar">

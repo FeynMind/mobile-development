@@ -2,6 +2,7 @@ package com.bangkit.feynmind.ui.profile
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatDelegate
 import com.bangkit.feynmind.R
 import com.bangkit.feynmind.databinding.FragmentProfileBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -22,6 +24,7 @@ class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
     private var currentImageUri: Uri? = null
+    private lateinit var sharedPreferences: SharedPreferences
 
     private val firebaseAuth: FirebaseAuth by lazy {
         FirebaseAuth.getInstance()
@@ -43,19 +46,48 @@ class ProfileFragment : Fragment() {
     ): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
 
+        // Inisialisasi SharedPreferences
+        sharedPreferences = requireActivity().getSharedPreferences("ThemePref", Context.MODE_PRIVATE)
+
+        // Sinkronkan status switch dark mode
+        setupViews()
         loadUserProfile()
         loadImageFromPreferences()
 
+        return binding.root
+    }
+
+    private fun setupViews() {
+        // Setup listener untuk edit foto
         binding.iconEditPicture.setOnClickListener {
             openGallery()
         }
 
+        // Setup tombol edit profil
         binding.btnEditp.setOnClickListener {
             val intent = Intent(requireContext(), EditProfileActivity::class.java)
             startActivity(intent)
         }
 
-        return binding.root
+        // Setup switch dark mode
+        val isDarkMode = sharedPreferences.getBoolean("isDarkMode", false)
+        binding.switchDarkMode.isChecked = isDarkMode
+
+        binding.switchDarkMode.setOnCheckedChangeListener { _, isChecked ->
+            saveThemePreference(isChecked)
+        }
+    }
+
+    private fun saveThemePreference(isDarkMode: Boolean) {
+        sharedPreferences.edit()
+            .putBoolean("isDarkMode", isDarkMode)
+            .apply()
+
+        // Restart aplikasi dengan aman untuk menerapkan tema
+        requireActivity().let {
+            it.finish()
+            it.startActivity(it.intent)
+        }
     }
 
     override fun onDestroyView() {
@@ -96,32 +128,14 @@ class ProfileFragment : Fragment() {
     }
 
     private fun saveImageUriToPreferences(context: Context, imageUri: Uri) {
-        val sharedPreferences = context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-
         val imagePath = saveImageToInternalStorage(context, imageUri)
-        imagePath?.let {
-            editor.putString("imagePath", it)
-        }
-        editor.apply()
-    }
-
-    private fun loadImageUriFromPreferences(context: Context): Uri? {
-        val sharedPreferences = context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-        val uriString = sharedPreferences.getString("imageUri", null)
-        return uriString?.let {
-            try {
-                Uri.parse(it)
-            } catch (e: Exception) {
-                null
-            }
-        }
+        sharedPreferences.edit()
+            .putString("imagePath", imagePath)
+            .apply()
     }
 
     private fun loadImageFromPreferences() {
-        val sharedPreferences = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val imagePath = sharedPreferences.getString("imagePath", null)
-
         imagePath?.let {
             val file = File(it)
             if (file.exists()) {
