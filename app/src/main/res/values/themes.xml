@@ -8,6 +8,7 @@
         <item name="colorOnContainer">@color/dark_green</item>
         <item name="colorSecondary">@color/yellow</item>
         <item name="colorOnSecondary">@color/black</item>
+        <item name="colorPrimaryContainer">@color/light_green</item>
 
 
         <item name="colorOutline">@color/outline_green</item>
@@ -20,6 +21,13 @@
 
 
     </style>
+
+    <style name="CustomBottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemIconTint">@color/dark_green</item>
+        <item name="itemTextColor">@color/dark_green</item>
+        <item name="backgroundTint">@color/light_green</item>
+    </style>
+
 
     <style name="Theme.FeynMind" parent="Base.Theme.FeynMind" />
 </resources>

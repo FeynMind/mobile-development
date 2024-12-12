@@ -60,9 +60,9 @@ class HomeFragment : Fragment() {
             Toast.makeText(requireContext(), "Fitur ini sedang dalam tahap pengembangan", Toast.LENGTH_SHORT).show()
         }
 
-        binding.btnLogout.setOnClickListener {
-            logoutUser()
-        }
+//        binding.btnLogout.setOnClickListener {
+//            logoutUser()
+//        }
     }
 
     private fun logoutUser() {

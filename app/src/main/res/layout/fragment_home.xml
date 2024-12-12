@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Selamat datang!"
+        android:textSize="18dp"
         android:textColor="?attr/colorPrimary"
         android:layout_marginStart="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -19,7 +20,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintVertical_bias="0.04" />
 
     <TextView
         android:id="@+id/userTv"
@@ -70,8 +71,8 @@
 
                 <ImageButton
                     android:id="@+id/quizBtn"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
                     android:contentDescription="Latihan Soal"
                     android:scaleType="centerCrop"
                     app:srcCompat="@drawable/quiz" />
@@ -96,8 +97,8 @@
 
                 <ImageButton
                     android:id="@+id/summaryBtn"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
                     android:contentDescription="Ringkasan"
                     android:scaleType="centerCrop"
                     app:srcCompat="@drawable/summary" />
@@ -122,8 +123,8 @@
 
                 <ImageButton
                     android:id="@+id/tipsBtn"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
                     android:contentDescription="Tips and Trick"
                     android:scaleType="centerCrop"
                     app:srcCompat="@drawable/tips" />
@@ -142,16 +143,32 @@
 
     </androidx.cardview.widget.CardView>
 
-    <!-- Logout Button -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_logout"
+    <TextView
+        android:id="@+id/historyTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="24dp"
-        android:text="Keluar"
-        app:cornerRadius="8dp"
+        android:layout_marginStart="10dp"
+        android:text="Riwayat Belajarmu"
+        android:textColor="?attr/colorPrimary"
+        android:textStyle="bold"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_container"
-        tools:layout_editor_absoluteX="32dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_container"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <!-- Logout Button -->
+<!--    <com.google.android.material.button.MaterialButton-->
+<!--        android:id="@+id/btn_logout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="24dp"-->
+<!--        android:text="Keluar"-->
+<!--        app:cornerRadius="8dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/card_container"-->
+<!--        tools:layout_editor_absoluteX="32dp" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

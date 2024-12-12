@@ -7,96 +7,164 @@
     android:layout_height="match_parent"
     tools:context=".ui.profile.ProfileFragment">
 
-    <!-- ImageView di atas -->
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/ic_user"
-        android:scaleType="centerCrop"
-        android:layout_alignParentTop="true"
-        android:clipToOutline="true"
-        android:background="@drawable/circular_image" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        android:layout_below="@id/imageView2"
-        android:layout_marginTop="16dp"
-        android:text="Nama User"/>
-
-    <TextView
-        android:id="@+id/textViewEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:textAlignment="center"
-        android:textStyle="italic"
-        android:layout_below="@id/textView2"
-        android:layout_marginTop="5dp"
-        android:text="email"/>
-
-    <TextView
-        android:id="@+id/textViewProgress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:textAlignment="center"
-        android:textStyle="italic"
-        android:layout_below="@id/textViewEmail"
-        android:layout_marginTop="5dp"
-        android:text="progress"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        app:cornerRadius="8dp"
-        app:backgroundTint="@color/container_green"
-        android:text="@string/edit_profile"
-        android:textColor="@color/dark_green"
-        android:layout_marginTop="5dp"
-        android:layout_below="@id/textViewProgress"/>
-
-    <!-- ScrollView untuk konten -->
     <ScrollView
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/imageView2"
-        android:layout_above="@id/bottom_navigation"
-        android:layout_marginTop="150dp"
-        android:padding="16dp">
+        android:paddingStart="25dp"
+        android:paddingEnd="25dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:paddingBottom="25dp">
 
-            <!-- Tambahkan konten di sini -->
+            <FrameLayout
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="32dp"
+                android:layout_gravity="center_horizontal">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_user"
+                    app:shapeAppearanceOverlay="@style/CircularImageShape"/>
+
+                <ImageView
+                    android:id="@+id/iconEditPicture"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="top|end"
+                    android:src="@drawable/ic_baseline_edit"
+                    android:background="@drawable/circular_image"
+                    android:padding="5dp"
+                    android:scaleType="center" />
+            </FrameLayout>
+
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Konten scrollable di sini."
-                android:textSize="16sp"
-                android:layout_marginBottom="16dp" />
+                android:layout_centerHorizontal="true"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:layout_marginTop="25dp"
+                android:text="Nama User"/>
 
+            <TextView
+                android:id="@+id/textViewEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textAlignment="center"
+                android:textStyle="italic"
+                android:layout_marginTop="2dp"
+                android:text="email"/>
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/textViewProgress"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_centerHorizontal="true"-->
+            <!--                android:textAlignment="center"-->
+            <!--                android:textStyle="italic"-->
+            <!--                android:layout_marginTop="2dp"-->
+            <!--                android:text="progress"/>-->
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEditp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                app:cornerRadius="8dp"
+                app:backgroundTint="@color/container_green"
+                android:text="@string/edit_profile"
+                android:textColor="@color/dark_green"
+                android:layout_marginTop="25dp" />
+
+            <TextView
+                android:id="@+id/textViewAchieve"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_gravity="start"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:layout_marginTop="25dp"
+                android:text="Pencapaian"/>
+
+            <View
+                android:id="@+id/boxViewAchieve"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/box_profile"/>
+
+            <TextView
+                android:id="@+id/textViewSetting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_gravity="start"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:layout_marginTop="25dp"
+                android:text="Pengaturan"/>
+
+            <FrameLayout
+                android:id="@+id/boxViewSetting"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/box_profile">
+
+                <ImageView
+                    android:id="@+id/iconDarkMode"
+                    android:layout_width="54dp"
+                    android:layout_height="53dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/rounded_box"
+                    android:padding="5dp"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_outline_dark_mode" />
+
+                <TextView
+                    android:id="@+id/textViewDarkMode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="90dp"
+                    android:layout_gravity="center|start"
+                    android:textStyle="bold"
+                    android:text="Dark Mode"
+                    android:textSize="20sp"
+                    android:scaleType="center"
+                    android:textColor="@color/dark_green"/>
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switchDarkMode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="16dp" />
+            </FrameLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_logout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Keluar"
+                app:cornerRadius="8dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="0dp" />
         </LinearLayout>
     </ScrollView>
 
-    <!-- Bottom Navigation View -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:menu="@menu/bottom_nav_menu" />
 </RelativeLayout>

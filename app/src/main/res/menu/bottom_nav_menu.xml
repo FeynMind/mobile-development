@@ -8,7 +8,7 @@
 
     <item
         android:id="@+id/navigation_class"
-        android:icon="@drawable/ic_feynmind_temp"
+        android:icon="@drawable/feynmind_logo"
         android:enabled="true"
         android:title="@string/nav_feynmind" />
 

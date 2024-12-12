@@ -8,6 +8,7 @@
         <item name="colorOnContainer">@color/dark_green_dark</item>
         <item name="colorSecondary">@color/yellow_dark</item>
         <item name="colorOnSecondary">@color/dark_green</item>
+        <item name="colorPrimaryContainer">@color/light_green_dark</item>
 
         <item name="colorOutline">@color/outline_green_dark</item>
         <item name="colorOutlineVariant">@color/font_grey_dark</item>
@@ -17,4 +18,11 @@
 
         <item name="android:colorBackground">@color/background_green_dark</item>
     </style>
+
+    <style name="CustomBottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemIconTint">@color/dark_green_dark</item>
+        <item name="itemTextColor">@color/dark_green_dark</item>
+        <item name="backgroundTint">@color/light_green_dark</item>
+    </style>
+
 </resources>
