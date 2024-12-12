@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.IntentSender
 import android.os.Bundle
 import android.text.InputType
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
@@ -18,6 +19,7 @@ import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.auth.userProfileChangeRequest
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -128,18 +130,35 @@ class RegisterActivity : AppCompatActivity() {
                     btnRegister.isEnabled = true
 
                     if (task.isSuccessful) {
-                        // Registrasi berhasil
-                        Toast.makeText(
-                            this@RegisterActivity,
-                            getString(R.string.buat_akun_berhasil),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        moveToLoginActivity()
+                        val user = firebaseAuth.currentUser
+                        Log.d("RegisterActivity", "User created successfully: ${user?.email}")
+                        val profileUpdates = userProfileChangeRequest {
+                            displayName = name
+                        }
+                        user?.updateProfile(profileUpdates)
+                            ?.addOnCompleteListener { updateTask ->
+                                if (updateTask.isSuccessful) {
+                                    Log.d("RegisterActivity", "Profile updated successfully with name: $name")
+                                    Toast.makeText(
+                                        this@RegisterActivity,
+                                        getString(R.string.buat_akun_berhasil),
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                    moveToLoginActivity()
+                                } else {
+                                    Log.e("RegisterActivity", "Profile update failed: ${updateTask.exception?.message}")
+                                    Toast.makeText(
+                                        this@RegisterActivity,
+                                        "Failed to update profile: ${updateTask.exception?.message}",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                            }
                     } else {
-                        // Registrasi gagal
+                        Log.e("RegisterActivity", "User creation failed: ${task.exception?.message}")
                         Toast.makeText(
                             this@RegisterActivity,
-                            getString(R.string.buat_akun_gagal),
+                            "Failed to register: ${task.exception?.message}",
                             Toast.LENGTH_SHORT
                         ).show()
                     }
