@@ -36,12 +36,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
+        android:layout_marginBottom="8dp"
         android:backgroundTint="?attr/colorPrimary"
         android:contentDescription="Voice"
         app:layout_constraintBottom_toBottomOf="@+id/chat_recycler_view"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_voice" />
+        app:srcCompat="@drawable/ic_voice"
+        app:tint="?attr/colorOnPrimary" />
 
     <LinearLayout
         android:id="@+id/input_layout"
@@ -57,11 +60,12 @@
         <!-- Add Button -->
         <ImageButton
             android:id="@+id/add_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="34dp"
+            android:layout_height="37dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Add"
-            app:srcCompat="@drawable/ic_add" />
+            app:srcCompat="@drawable/ic_add"
+            app:tint="?attr/colorPrimary" />
 
         <!-- Input Text -->
         <com.google.android.material.textfield.TextInputLayout
@@ -79,22 +83,13 @@
                 android:hint="Type a message" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Voice Button -->
-<!--        <ImageButton-->
-<!--            android:id="@+id/voice_button"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="?attr/selectableItemBackgroundBorderless"-->
-<!--            android:contentDescription="Voice"-->
-<!--            app:srcCompat="@drawable/ic_voice" />-->
-
-        <!-- Send Button -->
         <ImageButton
             android:id="@+id/send_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="34dp"
+            android:layout_height="37dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Send"
-            app:srcCompat="@drawable/ic_send" />
+            app:srcCompat="@drawable/ic_send"
+            app:tint="?attr/colorPrimary" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,7 +22,7 @@ class VoiceActivity : AppCompatActivity() {
     private lateinit var sendButton: ImageButton
     private lateinit var inputMessageEt: TextInputEditText
     private lateinit var chatRecyclerView: RecyclerView
-    private val chatMessages = mutableListOf<String>()
+    private val chatMessages = mutableListOf<ChatMessage>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +55,8 @@ class VoiceActivity : AppCompatActivity() {
         sendButton.setOnClickListener {
             val message = inputMessageEt.text.toString()
             if (message.isNotEmpty()) {
-                chatMessages.add(message)
+                chatMessages.add(ChatMessage(message, true)) // Pesan pengguna
+                chatMessages.add(ChatMessage("$message diterima", false)) // Respon sistem
                 adapter.notifyItemInserted(chatMessages.size - 1)
                 chatRecyclerView.scrollToPosition(chatMessages.size - 1)
                 inputMessageEt.text?.clear()

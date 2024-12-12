@@ -7,9 +7,7 @@
         <item name="colorContainer">@color/container_green_dark</item>
         <item name="colorOnContainer">@color/dark_green_dark</item>
         <item name="colorSecondary">@color/yellow_dark</item>
-        <item name="colorOnSecondary">@color/dark_green_dark</item>
-
-        <item name="colorPrimaryVariant">@color/dark_green</item>
+        <item name="colorOnSecondary">@color/dark_green</item>
 
         <item name="colorOutline">@color/outline_green_dark</item>
         <item name="colorOutlineVariant">@color/font_grey_dark</item>
