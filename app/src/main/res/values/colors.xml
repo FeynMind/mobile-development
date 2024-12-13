@@ -11,6 +11,7 @@
     <color name="yellow">#E6E890</color>
     <color name="red">#BA1A1A</color>
     <color name="container_red">#FFDAD6</color>
+    <color name="light_green">#DAF0D4</color>
 
     <!-- dark mode -->
     <color name="dark_green_dark">#8FC88E</color>
@@ -21,5 +22,6 @@
     <color name="yellow_dark">#E6E890</color>
     <color name="red_dark">#FF7A7A</color>
     <color name="container_red_dark">#6A1A1A</color>
+    <color name="light_green_dark">#0F540F</color>
 
 </resources>

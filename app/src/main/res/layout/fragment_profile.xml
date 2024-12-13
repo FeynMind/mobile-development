@@ -21,7 +21,7 @@
             android:orientation="vertical"
             android:gravity="center_horizontal"
             android:paddingBottom="25dp">
-            
+
             <FrameLayout
                 android:layout_width="130dp"
                 android:layout_height="130dp"
@@ -34,6 +34,7 @@
                     android:layout_height="match_parent"
                     android:src="@drawable/ic_user"
                     app:shapeAppearanceOverlay="@style/CircularImageShape"/>
+
 
                 <ImageView
                     android:id="@+id/iconEditPicture"
@@ -168,11 +169,4 @@
         </LinearLayout>
     </ScrollView>
 
-    <!-- Bottom Navigation View -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:menu="@menu/bottom_nav_menu" />
 </RelativeLayout>

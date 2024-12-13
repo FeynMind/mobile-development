@@ -64,9 +64,13 @@ dependencies {
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.auth)
     implementation(libs.firebase.firestore)
+
     implementation (libs.play.services.auth)
     implementation(libs.firebase.storage.ktx)
 
-
-
+    implementation(libs.android.async.http)
+    implementation(libs.glide)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
 }

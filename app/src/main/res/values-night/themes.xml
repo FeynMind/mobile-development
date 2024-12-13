@@ -1,13 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.FeynMind" parent="Theme.Material3.DayNight">
+    <style name="Base.Theme.FeynMind" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <item name="colorPrimary">@color/dark_green_dark</item>
         <item name="colorOnPrimary">@color/black</item>
         <item name="colorContainer">@color/container_green_dark</item>
         <item name="colorOnContainer">@color/dark_green_dark</item>
         <item name="colorSecondary">@color/yellow_dark</item>
-        <item name="colorOnSecondary">@color/dark_green_dark</item>
+        <item name="colorOnSecondary">@color/dark_green</item>
+        <item name="colorPrimaryContainer">@color/light_green_dark</item>
 
         <item name="colorOutline">@color/outline_green_dark</item>
         <item name="colorOutlineVariant">@color/font_grey_dark</item>
@@ -23,4 +24,11 @@
         <item name="trackTint">@color/font_grey</item>
         <item name="thumbTint">@color/dark_green</item>
     </style>
+
+    <style name="CustomBottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemIconTint">@color/dark_green_dark</item>
+        <item name="itemTextColor">@color/dark_green_dark</item>
+        <item name="backgroundTint">@color/light_green_dark</item>
+    </style>
+
 </resources>
