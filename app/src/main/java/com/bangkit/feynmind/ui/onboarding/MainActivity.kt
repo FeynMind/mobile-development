@@ -39,6 +39,10 @@ class MainActivity : AppCompatActivity() {
 
         firebaseAuth = FirebaseAuth.getInstance()
         checkUserLoginStatus()
+
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
         setupBottomNavigation()
     }
 
@@ -48,10 +52,6 @@ class MainActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(
             if (isDarkMode) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
         )
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
-
-        setupBottomNavigation()
     }
 
     private fun setupBottomNavigation() {
@@ -65,9 +65,8 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_home,
-                R.id.navigation_chat,
-                R.id.navigation_profile,
-                R.id.navigation_class
+                R.id.navigation_class,
+                R.id.navigation_profile
             )
         )
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
@@ -87,5 +86,4 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
     }
-
 }

@@ -23,9 +23,4 @@
         android:label="@string/nav_profil"
         tools:layout="@layout/fragment_profile" />
 
-    <fragment
-        android:id="@+id/navigation_editprofile"
-        android:name="com.bangkit.feynmind.ui.profile.EditProfileFragment"
-        android:label="Edit Profile"
-        tools:layout="@layout/fragment_edit_profile"/>
 </navigation>
