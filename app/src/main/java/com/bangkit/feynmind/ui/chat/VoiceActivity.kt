@@ -17,7 +17,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 
 class VoiceActivity : AppCompatActivity() {
-    private lateinit var addButton: FloatingActionButton
+    private lateinit var addButton: ImageButton
     private lateinit var voiceButton: FloatingActionButton
     private lateinit var sendButton: ImageButton
     private lateinit var inputMessageEt: TextInputEditText
@@ -37,12 +37,18 @@ class VoiceActivity : AppCompatActivity() {
         }
 
         // Bind Views
+        addButton = findViewById(R.id.add_button)
         voiceButton = findViewById(R.id.voice_button)
         inputMessageEt = findViewById(R.id.input_message)
         sendButton = findViewById(R.id.send_button)
         chatRecyclerView = findViewById(R.id.chat_recycler_view)
 
         // Set Click Listener
+
+        addButton.setOnClickListener {
+            openFilePicker()
+        }
+
         voiceButton.setOnClickListener {
             voiceInput()
         }
@@ -64,6 +70,33 @@ class VoiceActivity : AppCompatActivity() {
                 Toast.makeText(this, "Message cannot be empty", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private val filePickerArl = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == RESULT_OK) {
+            val uri = result.data?.data
+            uri?.let {
+                // Validasi tipe file PDF
+                contentResolver.getType(uri)?.let { mimeType ->
+                    if (mimeType == "application/pdf") {
+                        // Lakukan sesuatu dengan file PDF, seperti menyimpannya atau menampilkan preview
+                        Toast.makeText(this, "File PDF terpilih: $uri", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(this, "File bukan PDF", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun openFilePicker() {
+        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
+            addCategory(Intent.CATEGORY_OPENABLE)
+            type = "application/pdf" // Hanya file PDF yang ditampilkan
+        }
+        filePickerArl.launch(intent)
     }
 
     private fun voiceInput() {
