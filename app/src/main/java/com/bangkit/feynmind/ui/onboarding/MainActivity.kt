@@ -1,5 +1,6 @@
 package com.bangkit.feynmind.ui.onboarding
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        applyThemePreference()
         setContentView(R.layout.activity_main)
 
         val sharedPref = getSharedPreferences("FeynMindPreferences", MODE_PRIVATE)
@@ -38,9 +40,17 @@ class MainActivity : AppCompatActivity() {
         checkUserLoginStatus()
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
-
+        setSupportActionBar(toolbar)  
+        
         setupBottomNavigation()
+    }
+
+    private fun applyThemePreference() {
+        val sharedPreferences = getSharedPreferences("ThemePref", Context.MODE_PRIVATE)
+        val isDarkMode = sharedPreferences.getBoolean("isDarkMode", false)
+        AppCompatDelegate.setDefaultNightMode(
+            if (isDarkMode) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
+        )
     }
 
     private fun setupBottomNavigation() {
